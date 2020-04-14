@@ -38,7 +38,7 @@ STDMETHODIMP OnnxruntimeEngineBuilder::CreateEngine(Windows::AI::MachineLearning
 
   if (batch_size_override_.has_value()) {
     constexpr const char* DATA_BATCH = "DATA_BATCH";
-    RETURN_HR_IF_NOT_OK_MSG(ort_api->AddFreeDimensionOverride(session_options.get(), DATA_BATCH, batch_size_override_.value()),
+    RETURN_HR_IF_NOT_OK_MSG(ort_api->AddFreeDimensionOverrideByDenotation(session_options.get(), DATA_BATCH, batch_size_override_.value()),
                             ort_api);
   }
 

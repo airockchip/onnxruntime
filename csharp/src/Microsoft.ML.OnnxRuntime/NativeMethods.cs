@@ -437,8 +437,11 @@ namespace Microsoft.ML.OnnxRuntime
         //[DllImport(nativeLib, CharSet = charSet)]
         //public static extern void OrtAddCustomOp(IntPtr /*(OrtSessionOptions*)*/ options, string custom_op_path);
 
-        public delegate IntPtr /*(OrtStatus*)*/DOrtAddFreeDimensionOverride(IntPtr /*(OrtSessionOptions*) */ options, string /*(const char*)*/ symbolic_dim, int dim_override);
-        public static DOrtAddFreeDimensionOverride OrtAddFreeDimensionOverride;
+        public delegate IntPtr /*(OrtStatus*)*/ DOrtAddFreeDimensionOverrideByDenotation(IntPtr /*(OrtSessionOptions*) */ options, string /*(const char*)*/ dim_denotation, int dim_value);
+        public static DOrtAddFreeDimensionOverrideByDenotation OrtAddFreeDimensionOverrideByDenotation;
+
+        public delegate IntPtr /*(OrtStatus*)*/ DOrtAddFreeDimensionOverrideByName(IntPtr /*(OrtSessionOptions*) */ options, string /*(const char*)*/ dim_name, int dim_value);
+        public static DOrtAddFreeDimensionOverrideByName OrtAddFreeDimensionOverrideByName;
 
         public delegate IntPtr /*(OrtStatus*)*/DOrtRegisterCustomOpsLibrary(IntPtr /*(OrtSessionOptions*) */ options, string /*(const char*)*/ library_path, out IntPtr /* (void**) */ library_handle);
         public static DOrtRegisterCustomOpsLibrary OrtRegisterCustomOpsLibrary;
